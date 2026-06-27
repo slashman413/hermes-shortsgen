@@ -1,0 +1,74 @@
+name: ShortsGen Pro
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # Every 6 hours (Pro: up to 4/day)
+  workflow_dispatch:
+    inputs:
+      customer_id:
+        description: "Customer ID"
+        required: false
+      tier:
+        description: "Tier (pro/business/enterprise)"
+        required: false
+        default: "pro"
+
+permissions:
+  contents: write
+  pages: write
+
+env:
+  PYTHON_VERSION: "3.11"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          pip install edge-tts PyYAML requests google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+      - name: Check usage limits
+        id: check_usage
+        run: |
+          CUSTOMER_ID="${{ github.event.inputs.customer_id || 'demo' }}"
+          TIER="${{ github.event.inputs.tier || 'pro' }}"
+          echo "customer=$CUSTOMER_ID" >> $GITHUB_OUTPUT
+          echo "tier=$TIER" >> $GITHUB_OUTPUT
+
+      - name: Run ShortsGen
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          MOOD: ${{ (github.event.schedule == '0 0 * * *' && 'inspirational') || (github.event.schedule == '0 6 * * *' && 'healing') || 'random' }}
+        run: |
+          git clone https://github.com/slashman413/pixabay-shorts-bot.git /tmp/bot
+          cd /tmp/bot
+          pip install -r requirements.txt
+          python src/main.py --mood "${MOOD}" --verbose || true
+
+      - name: Track usage
+        run: |
+          cd /d/Hermes-Agent/hermes-shortsgen || true
+          python scripts/engine.py usage --customer "${{ steps.check_usage.outputs.customer }}" --tier "${{ steps.check_usage.outputs.tier }}"
+
+      - name: Generate revenue report
+        run: |
+          cd /d/Hermes-Agent/hermes-shortsgen || true
+          python scripts/engine.py revenue
+          python scripts/engine.py
+
+      - name: Deploy pages
+        run: |
+          git config user.name "hermes-agent"
+          git config user.email "hermes@nousresearch.com"
+          git add docs/ data/
+          git diff --staged --quiet || git commit -m "auto: update pricing + usage data"
+          git push
