@@ -56,14 +56,14 @@ jobs:
 
       - name: Track usage
         run: |
-          cd /d/Hermes-Agent/hermes-shortsgen || true
-          python scripts/engine.py usage --customer "${{ steps.check_usage.outputs.customer }}" --tier "${{ steps.check_usage.outputs.tier }}"
+          cd /tmp/bot || true
+          python /home/runner/work/hermes-shortsgen/hermes-shortsgen/scripts/engine.py usage --customer "${{ steps.check_usage.outputs.customer }}" --tier "${{ steps.check_usage.outputs.tier }}"
 
       - name: Generate revenue report
         run: |
-          cd /d/Hermes-Agent/hermes-shortsgen || true
-          python scripts/engine.py revenue
-          python scripts/engine.py
+          SRC=/home/runner/work/hermes-shortsgen/hermes-shortsgen
+          python $SRC/scripts/engine.py revenue
+          python $SRC/scripts/engine.py
 
       - name: Deploy pages
         run: |

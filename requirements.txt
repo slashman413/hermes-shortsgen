@@ -1,0 +1,10 @@
+# ShortsGen Pro dependencies
+# Shared dependencies are in pixabay-shorts-bot/requirements.txt
+# This file is required for setup-python cache to work
+edge-tts>=6.0
+PyYAML>=6.0
+requests>=2.28
+google-auth>=2.0
+google-auth-oauthlib>=1.0
+google-auth-httplib2>=0.1
+google-api-python-client>=2.0
