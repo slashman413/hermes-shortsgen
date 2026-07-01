@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShortsGen Pro — AI自動生成YouTube Shorts</title>
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,'Segoe UI',Roboto,sans-serif; background:#0a0a1a; color:#e2e8f0; }
+    .container { max-width:1200px; margin:auto; padding:20px; }
+    header { text-align:center; padding:60px 0 40px; }
+    header h1 { font-size:3rem; background:linear-gradient(135deg,#3b82f6,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    header p { color:#94a3b8; font-size:1.2rem; margin-top:10px; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin:40px 0; }
+    .pricing-card { background:#1e293b; border-radius:20px; padding:30px; position:relative; transition:0.3s; }
+    .pricing-card:hover { transform:translateY(-8px); box-shadow:0 12px 40px rgba(59,130,246,0.2); }
+    .pricing-card.popular { border:2px solid #3b82f6; transform:scale(1.05); }
+    .pricing-card.popular:hover { transform:scale(1.05) translateY(-8px); }
+    .badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#3b82f6; color:white; padding:4px 16px; border-radius:20px; font-size:0.8rem; font-weight:bold; }
+    .pricing-card h3 { font-size:1.5rem; margin-bottom:10px; }
+    .price { font-size:3rem; font-weight:bold; color:#f59e0b; }
+    .price span { font-size:1rem; color:#64748b; }
+    .limit { color:#94a3b8; margin:5px 0 15px; }
+    .pricing-card ul { list-style:none; margin:20px 0; }
+    .pricing-card li { padding:6px 0; color:#cbd5e1; font-size:0.9rem; }
+    .cta-btn { display:block; text-align:center; padding:14px; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; border-radius:12px; text-decoration:none; font-weight:bold; transition:0.3s; }
+    .cta-btn:hover { transform:scale(1.02); box-shadow:0 4px 16px rgba(59,130,246,0.4); }
+    .showcase { background:#1e293b; border-radius:20px; padding:40px; margin:40px 0; }
+    .showcase h2 { text-align:center; margin-bottom:20px; }
+    .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+    .step { text-align:center; padding:20px; }
+    .step .num { width:40px; height:40px; background:#3b82f6; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-weight:bold; }
+    footer { text-align:center; padding:40px; color:#475569; }
+    .stats { display:flex; gap:20px; justify-content:center; margin:20px 0; flex-wrap:wrap; }
+    .stat-item { background:#1e293b; padding:20px 30px; border-radius:12px; text-align:center; }
+    .stat-item .num { font-size:2rem; font-weight:bold; color:#3b82f6; }
+    .stat-item .label { color:#94a3b8; font-size:0.9rem; }
+</style>
+<!-- Google tag (gtag.js) -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 ShortsGen Pro</h1>
+            <p>AI 自動生成 YouTube Shorts — 名言語錄 + 背景音樂 + 自動上傳</p>
+            <div class="stats">
+                <div class="stat-item"><div class="num">1,000+</div><div class="label">已生成 Shorts</div></div>
+                <div class="stat-item"><div class="num">50+</div><div class="label">活躍用戶</div></div>
+                <div class="stat-item"><div class="num">99.9%</div><div class="label">正常運行時間</div></div>
+            </div>
+        </header>
+
+        <div class="showcase">
+            <h2>🚀 如何運作</h2>
+            <div class="steps">
+                <div class="step"><div class="num">1</div><h3>選擇方案</h3><p style="color:#94a3b8;">選擇適合你的訂閱方案</p></div>
+                <div class="step"><div class="num">2</div><h3>設定參數</h3><p style="color:#94a3b8;">選擇主題、風格、名言類型</p></div>
+                <div class="step"><div class="num">3</div><h3>自動生成</h3><p style="color:#94a3b8;">GitHub Actions 每日自動產出 Shorts</p></div>
+                <div class="step"><div class="num">4</div><h3>自動上傳</h3><p style="color:#94a3b8;">自動發布到你的 YouTube 頻道</p></div>
+            </div>
+        </div>
+
+        <h2 style="text-align:center;margin:40px 0;">📊 方案與定價</h2>
+        <div class="pricing-grid">
+        <div class="pricing-card" >
+            
+            <h3>免費版</h3>
+            <p class="price">$0<span>/月</span></p>
+            <p class="limit">每月 5 支 Shorts</p>
+            <ul><li>✅ 基本名言庫</li><li>✅ 內建背景音樂</li><li>✅ YouTube上傳</li></ul>
+            <a href="https://buy.stripe.com/test_XXX_free" class="cta-btn">
+                免費開始
+            </a>
+        </div>
+        <div class="pricing-card" class="popular">
+            <span class="badge">最受歡迎</span>
+            <h3>Pro 版</h3>
+            <p class="price">$29<span>/月</span></p>
+            <p class="limit">每月 60 支 Shorts</p>
+            <ul><li>✅ 所有免費功能</li><li>✅ 自訂名言庫</li><li>✅ 自訂背景音樂</li><li>✅ 無浮水印</li><li>✅ 優先上傳</li><li>✅ 自訂字體</li><li>✅ 分析儀表板</li></ul>
+            <a href="https://buy.stripe.com/test_XXX_pro" class="cta-btn">
+                立即訂閱
+            </a>
+        </div>
+        <div class="pricing-card" >
+            
+            <h3>商業版</h3>
+            <p class="price">$99<span>/月</span></p>
+            <p class="limit">每月 999 支 Shorts</p>
+            <ul><li>✅ 所有Pro功能</li><li>✅ 無限短影音</li><li>✅ API存取</li><li>✅ 自訂品牌</li><li>✅ 多頻道管理</li><li>✅ 專屬支援</li><li>✅ 白標籤</li></ul>
+            <a href="https://buy.stripe.com/test_XXX_business" class="cta-btn">
+                立即訂閱
+            </a>
+        </div>
+        <div class="pricing-card" >
+            
+            <h3>企業版</h3>
+            <p class="price">$499<span>/月</span></p>
+            <p class="limit">每月 9999 支 Shorts</p>
+            <ul><li>✅ 所有商業功能</li><li>✅ 自訂開發</li><li>✅ SLA保證</li><li>✅ 優先API</li><li>✅ 專屬經理</li><li>✅ 客製化整合</li></ul>
+            <a href="https://buy.stripe.com/test_XXX_enterprise" class="cta-btn">
+                立即訂閱
+            </a>
+        </div></div>
+
+        <div class="showcase">
+            <h2>💡 適合誰？</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+                <div><h3>🎯 創作者</h3><p style="color:#94a3b8;">每日自動產出高品質 Shorts，專注內容創作</p></div>
+                <div><h3>🏢 品牌</h3><p style="color:#94a3b8;">維持每日品牌曝光，自動化行銷內容</p></div>
+                <div><h3>📈 投資人</h3><p style="color:#94a3b8;">自動生成金融/投資教育 Shorts</p></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>ShortsGen Pro by <a href="https://github.com/slashman413" style="color:#3b82f6;">slashman413</a></p>
+            <p style="margin-top:10px;">
+                <a href="https://github.com/slashman413/hermes-shortsgen" style="color:#3b82f6;text-decoration:none;">GitHub</a> |
+                <a href="https://www.youtube.com/@GentleSoul666" style="color:#3b82f6;text-decoration:none;">YouTube</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
