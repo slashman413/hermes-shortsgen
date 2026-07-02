@@ -16,5 +16,11 @@
     "timestamp": "2026-07-01T20:03:22.929592",
     "month": "2026-07",
     "tier": "pro"
+  },
+  {
+    "customer_id": "demo",
+    "timestamp": "2026-07-02T04:02:16.610807",
+    "month": "2026-07",
+    "tier": "pro"
   }
 ]
