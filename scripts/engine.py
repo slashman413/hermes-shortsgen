@@ -116,7 +116,7 @@ def register_customer(email: str, tier: str, stripe_id: str = "") -> dict:
         "status": "active",
         "created_at": datetime.now().isoformat(),
         "shorts_used": 0,
-        "shorts_limit": TIERS[tier]["shorts_per_month"],
+        "shorts_limit": TIERS.get(tier, TIERS["free"])["shorts_per_month"],
         "renewal_date": (datetime.now() + timedelta(days=30)).isoformat(),
     }
     customers.append(customer)
