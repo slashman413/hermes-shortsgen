@@ -13,6 +13,12 @@ CUSTOMERS_FILE = DATA_DIR / "customers.json"
 USAGE_FILE = DATA_DIR / "usage.json"
 INCOME_FILE = DATA_DIR / "income_log.json"
 
+# Checkout: paid tiers → the established ShortsGen Ko-fi checkout (used site-wide);
+# free tier → GitHub. The previous buy.stripe.com/test_XXX_* links were dead
+# placeholders. To sell via Gumroad instead, set CHECKOUT_URL to your product URL.
+CHECKOUT_URL = "https://ko-fi.com/s/896aa3c229"
+FREE_SIGNUP_URL = "https://github.com/slashman413/hermes-shortsgen"
+
 # Pricing tiers
 TIERS = {
     "free": {
@@ -197,7 +203,7 @@ def generate_pricing_page() -> str:
             <p class="price">{price}<span>/月</span></p>
             <p class="limit">每月 {tier['shorts_per_month']} 支 Shorts</p>
             <ul>{features_html}</ul>
-            <a href="https://buy.stripe.com/test_XXX_{tier_key}" class="cta-btn">
+            <a href="{FREE_SIGNUP_URL if tier['price_monthly']==0 else CHECKOUT_URL}" class="cta-btn" target="_blank" rel="noopener">
                 {'免費開始' if tier['price_monthly']==0 else '立即訂閱'}
             </a>
         </div>"""
