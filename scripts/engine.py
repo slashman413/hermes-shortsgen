@@ -190,21 +190,25 @@ def calculate_revenue() -> dict:
 def generate_pricing_page() -> str:
     """Generate the pricing page HTML."""
     cards = ""
+    # ShortsGen is delivered as a self-hosted code kit (buyer runs it on their own
+    # GitHub), so pricing is ONE-TIME, not a monthly subscription — and per-month
+    # "shorts" limits / watermark tiers aren't enforceable on self-hosted code.
     for tier_key, tier in TIERS.items():
         features_html = "".join(f"<li>✅ {f}</li>" for f in tier["features"])
-        price = "$0" if tier["price_monthly"] == 0 else f"${tier['price_monthly']}"
+        is_free = tier["price_monthly"] == 0
+        price = "$0" if is_free else f"${tier['price_monthly']}"
+        unit = "" if is_free else '<span>一次</span>'
         popular = 'class="popular"' if tier_key == "pro" else ""
         badge = '<span class="badge">最受歡迎</span>' if tier_key == "pro" else ""
-        
+
         cards += f"""
         <div class="pricing-card" {popular}>
             {badge}
             <h3>{tier['name']}</h3>
-            <p class="price">{price}<span>/月</span></p>
-            <p class="limit">每月 {tier['shorts_per_month']} 支 Shorts</p>
+            <p class="price">{price}{unit}</p>
             <ul>{features_html}</ul>
-            <a href="{FREE_SIGNUP_URL if tier['price_monthly']==0 else CHECKOUT_URL}" class="cta-btn" target="_blank" rel="noopener">
-                {'免費開始' if tier['price_monthly']==0 else '立即訂閱'}
+            <a href="{FREE_SIGNUP_URL if is_free else CHECKOUT_URL}" class="cta-btn" target="_blank" rel="noopener">
+                {'免費開始' if is_free else '立即購買'}
             </a>
         </div>"""
 
@@ -261,7 +265,7 @@ def generate_pricing_page() -> str:
         <div class="showcase">
             <h2>🚀 如何運作</h2>
             <div class="steps">
-                <div class="step"><div class="num">1</div><h3>選擇方案</h3><p style="color:#94a3b8;">選擇適合你的訂閱方案</p></div>
+                <div class="step"><div class="num">1</div><h3>選擇方案</h3><p style="color:#94a3b8;">選擇適合你的方案（一次購買）</p></div>
                 <div class="step"><div class="num">2</div><h3>設定參數</h3><p style="color:#94a3b8;">選擇主題、風格、名言類型</p></div>
                 <div class="step"><div class="num">3</div><h3>自動生成</h3><p style="color:#94a3b8;">GitHub Actions 每日自動產出 Shorts</p></div>
                 <div class="step"><div class="num">4</div><h3>自動上傳</h3><p style="color:#94a3b8;">自動發布到你的 YouTube 頻道</p></div>
