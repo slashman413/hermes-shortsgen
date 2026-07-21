@@ -290,6 +290,9 @@ def generate_pricing_page() -> str:
                 <a href="https://github.com/slashman413/hermes-shortsgen" style="color:#3b82f6;text-decoration:none;">GitHub</a> |
                 <a href="https://www.youtube.com/@GentleSoul666" style="color:#3b82f6;text-decoration:none;">YouTube</a>
             </p>
+            <p style="margin-top:14px;font-size:0.8rem;color:#475569;max-width:640px;margin-left:auto;margin-right:auto;">
+                付款由 Ko-fi 安全處理；退款請透過 Ko-fi 申請。本產品為自動化工具，<strong>不保證任何觀看數、訂閱數或收入</strong>，實際成果因人而異。「金融／投資教育」等內容由使用者自行產製，非投資建議。
+            </p>
         </footer>
     </div>
 </body>
